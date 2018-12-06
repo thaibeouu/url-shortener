@@ -60,7 +60,6 @@ class App extends Component {
     const onNotificationClick = (event) => {
       const code = event.target.id;
       dispatch(removeNotification(code));
-      dispatch(initUrls());
       window.open(homeDir + code);
     };
     const onUrlClick = () => {

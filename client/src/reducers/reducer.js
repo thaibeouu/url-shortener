@@ -32,10 +32,8 @@ const reducer = (state = initialState, action) => {
     }
     case 'REMOVE_NOTIFICATION':
     {
-      const newNotifications = state.notifications;
-      newNotifications.splice(state.notifications.indexOf(action.item), 1);
       return Object.assign({}, state, {
-        notifications: newNotifications,
+        notifications: state.notifications.filter(item => item !== action.item),
       });
     }
     default:
