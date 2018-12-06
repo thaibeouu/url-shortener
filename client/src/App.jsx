@@ -33,7 +33,6 @@ class App extends Component {
     dispatch(initUrls());
     socket.on('newUrl', (data) => {
       dispatch(addNotification(data));
-      dispatch(initUrls());
     });
   }
 
