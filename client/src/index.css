@@ -1,9 +1,12 @@
-body {
+/* body {
   font-family: 'Noto Sans SC', sans-serif;
-}
-a {
+} */
+.list-group-item > a {
   font-family:monospace;
 }
 .container {
   margin-top: 20px;
+}
+.dropdown-item {
+  font-size: 14px;
 }

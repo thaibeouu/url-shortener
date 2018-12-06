@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const socketIo = require('socket.io');
 
 const url = 'mongodb://mongo:27017';
+// const url = 'mongodb://localhost:27017';
 const app = express();
 
 app.use(bodyParser.json());
@@ -89,6 +90,7 @@ app.post('/api/new', (req, res) => {
 });
 
 app.get('/:urlId', (req, res) => {
+  let redirectUrl = '/';
   MongoClient.connect(url, (err, client) => {
     if (err) throw err;
     const db = client.db('tiki');
@@ -106,11 +108,9 @@ app.get('/:urlId', (req, res) => {
               lastVisited: (Date.now()),
             },
           });
-          res.redirect(doc.url);
-        } else {
-          res.redirect('/');
+          redirectUrl = doc.url;
         }
-      });
+      }).then(() => res.redirect(redirectUrl));
   });
 });
 
